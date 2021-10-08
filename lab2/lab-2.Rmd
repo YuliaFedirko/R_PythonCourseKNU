@@ -1,0 +1,81 @@
+# First task
+Create a vector v of 100 elements by command v <- rnorm(100). 
+```{r}
+  v <- rnorm(100)
+```
+
+Show for this vector: 10-th element; 
+```{r}
+ v[10]
+```
+
+elements from 10-th to 20-th included; 
+```{r}
+  v[10:20]
+```
+
+
+10 elements start from 20-th; 
+```{r}
+v[20:29]
+```
+
+elements that more than 0.
+```{r}
+v[v>0]
+```
+
+
+
+# Second task
+Create data frame by command y <- data.frame(a = rnorm(100), b = 1:100, cc = sample(letters, 100, replace = TRUE)). 
+```{r}
+y <- data.frame(a = rnorm(100), b = 1:100, cc = sample(letters, 100, replace = TRUE))
+```
+
+For this data frame show out: last 10 rows; 
+```{r}
+ tail(y, 10)
+```
+
+rows from 10th till 20th included; 
+```{r}
+ y[10:20, ]
+```
+
+10-th element of column b; 
+```{r}
+ y[10, "b"]
+```
+
+the whole column cc, during this use the name of the column.
+
+```{r}
+ y$cc
+```
+
+# Third task
+Create a vector z with elements 1, 2, 3, NA, 4, NA, 5, NA. 
+```{r}
+  z <- c(1,2,3,NA,4,NA,5,NA)
+```
+
+For this vector: 
+display all not NA values; 
+```{r}
+  good <- complete.cases(z)
+  z[good]
+```
+
+count average of all not NA values 
+```{r}
+  mean(z[good])
+```
+
+then count including NA values. 
+
+```{r}
+  mean(z)  
+  mean(z, na.rm=TRUE)
+```
+
