@@ -1,0 +1,54 @@
+Download csv to dataframe.
+```{r}
+df = read.csv("hw1_data.csv")
+df
+```
+
+1. What names of columns in the file?
+```{r}
+names(df)
+```
+
+2. Display first 6 rows of the data frame.
+```{r}
+head(df, 6)
+```
+
+3. How many rows in data frame? 
+```{r}
+nrow(df)
+```
+
+4. Display last 10 rows of the data frame.
+```{r}
+tail(df,10)
+```
+
+5. How many «NA» values in «Ozone» column?
+```{r}
+sum(is.na(df$Ozone))
+```
+
+6. What the mean value of column «Ozone»? Exclude «NA» values.
+```{r}
+mean(df$Ozone, na.rm = TRUE)
+```
+
+7. Display a part of the data frame (subset) with values «Ozone» > 31 and
+«Temp» > 90. What the mean value of «Solar.R» in this data frame (subset)?
+```{r}
+sub_df = subset(df, Ozone > 30 & Temp > 90)
+sub_df
+mean(sub_df$Solar.R)
+```
+
+8. What the mean value for «Temp» for June («Month» = 6)?
+```{r}
+mean(subset(df, Month == 6)$Temp)
+```
+
+9. What the maximum value for «Ozone» for May?
+```{r}
+max(subset(df, Month == 5)$Ozone, na.rm = TRUE)
+```
+
