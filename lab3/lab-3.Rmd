@@ -1,0 +1,64 @@
+# Function creating
+1.Function add2(x, y) that returns sum of two numbers.
+```{r}
+add2 <- function(x,y) {
+   sum(x,y)
+}
+add2(2,4)
+```
+
+2. Function above(x, n), which takes the vector and the number n, and returns all elements of the vector that are greater than n. By default n = 10.
+```{r}
+above <- function(x,n=10) {
+  x[x>n]
+}
+x <- sample(20)
+x
+above(x)
+above(x, 15)
+above(c(5,6,7,12,14))
+```
+
+3. Function my_ifelse(x, exp, n), which takes vector x, compare all its elements by using exp with n, and returns elements of the vector that match conditions of expression. Example: my_ifelse(x, “>”, 0) returns all elements of x that greater than 0. Exp can be equal to “<”, “>”, “<=”, “>=”, “==”. If exp doesn’t match with any of those expressions returns vector x.
+```{r}
+
+my_ifelse <- function(x, exp, n) {
+  if (exp == "<")
+    x[x<n]
+  else if (exp == ">")
+    x[x>n]
+  else if (exp == ">=")
+    x[x>=n]
+  else if (exp == "<=")
+    x[x<=n]
+  else if (exp == "==")
+    x[x==n]
+  else
+    x
+}
+x <- sample(20)
+x
+my_ifelse(x, "<", 5)
+my_ifelse(x, "<=", 10)
+my_ifelse(x, "==", 12)
+
+```
+
+4. Function columnmean(x, removeNA) which counts the mean value for each 
+column of the matrix, or data frame. The logical parameter removeNA
+indicates whether to delete the NA value. By default, it is TRUE.
+```{r}
+M1<-matrix(sample(9),nrow=3, ncol = 3)
+M1
+columnmean <- function(x, removeNA = TRUE){
+  colMeans(x, na.rm = removeNA)
+}
+columnmean(M1)
+
+M2 <- matrix(data = c(1,2,NA,3), ncol=2)
+M2
+
+columnmean(M2)
+columnmean(M2, removeNA = FALSE)
+```
+
