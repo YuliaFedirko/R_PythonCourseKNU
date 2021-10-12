@@ -1,0 +1,68 @@
+1. Create a matrix mat with 5 columns and 10 rows using matrix with random 
+values (function rnorm(50)).
+```{r}
+M1 = matrix(data = rnorm(50), ncol =5, nrow = 10)
+M1
+```
+
+2. Find the maximum value of each column.
+```{r}
+rbind(M1, Max = apply(M1, 2, max))
+
+```
+
+3. Find the mean value of each column.
+```{r}
+rbind(M1, Mean = apply(M1, 2, mean))
+
+```
+
+4. Find minimum value in each row. 
+```{r}
+cbind(M1, Min = apply(M1, 1, min))
+```
+
+5. Sort each column of the table. 
+```{r}
+apply(M1, 2, function(x) sort(x))
+```
+
+6. Find number of values < 0 for each column. Choose your function.
+```{r}
+rbind(M1, "<0" = apply(M1, 2, function(x) length((x[x<0]))))
+```
+
+7. Display s vector with Boolean values TRUE and FALSE. TRUE if there are 
+elements> 2 in the column, FALSE if not.
+```{r}
+s<- sapply(apply(M1,2,function(x) length(x[x>2])), function(x) x>0)
+s
+
+```
+
+8. Create a list list1 <- list(observationA = c(1:5, 7:3), observationB = matrix(1:6, nrow=2)). For this list find sum using function lapply.
+```{r}
+list1 <- list(observationA = c(1:5, 7:3), observationB = matrix(1:6, nrow=2))
+list1
+
+lapply(list1, sum)
+
+```
+
+9. For each element of the list1 find maximum and minimum values (range) 
+using lapply and sapply.
+```{r}
+lapply(list1, max)
+sapply(list1, max)
+
+lapply(list1, min)
+sapply(list1, min)
+
+```
+
+10. For the built-in data set InsectSprays find mean count for each spray
+```{r}
+names(InsectSprays)
+tapply(InsectSprays$count, InsectSprays$spray,mean)
+```
+
