@@ -1,0 +1,55 @@
+
+```{r}
+ setwd("D:/КНУ обучение/Магистр/1 курс/1 семестр/R")
+```
+ 
+1. Write a function pmean which count mean value of contamination with 
+sulfates or nitrates among the specified list of monitors. This function takes 
+three arguments: "directory", "pollutant", "id". Directory - the folder where 
+the data is located, pollutant - type of pollution, id - list of monitors. The id 
+argument has a default value of 1: 332. The function must ignore the NA 
+values.
+
+```{r}
+source("pmean.R")
+pmean("specdata", "sulfate", 1:10)
+pmean("specdata", "sulfate", 55)
+pmean("specdata", "nitrate")
+
+```
+
+2. Write a function complete, which displays the number of completely observed 
+cases for each file. The function takes two arguments: "Directory" and "id" 
+and returns a data frame in which the first column is the file name and the 
+second is the number of full observations.
+
+```{r}
+source("pmean.R")
+library(dplyr)
+complete("specdata", 1)
+complete("specdata", c(2, 4, 8, 10, 12))
+complete("specdata", 50:60)
+
+```
+
+3. Write a function corr which takes two arguments: directory (the folder where 
+observation files located) and threshold (the default value of the threshold is 
+0) and calculates the correlation between sulfates and nitrates for monitors for 
+which the number of complete observations is greater than the threshold.
+The function must return a vector of correlation values. If no monitor exceeds 
+the threshold, the function should return a numeric vector of length 0. To 
+calculate the correlation between sulfates and nitrates, use the built-in cor
+function with default parameters.
+
+```{r}
+source("pmean.R")
+cr <- corr("specdata", 150)
+head(cr); summary(cr)
+
+cr <- corr("specdata", 400)
+head(cr); summary(cr)
+
+cr <- corr("specdata", 5000)
+head(cr); summary(cr) ; length(cr)
+```
+
